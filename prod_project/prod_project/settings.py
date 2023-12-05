@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-261)1sm_(w&+)9qtt9)*py5+u-k2#(h97m%lpstxmzjks(h&)z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1','final-project-mplatteau.azurewebsites.net']
 
 
 # Application definition
@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'prod_project.urls'
@@ -118,7 +119,16 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [ BASE_DIR / 'static']
+
+STATIC_ROOT = BASE_DIR / 'productionfiles'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = "main.User"
+
+CSRF_COOKIE_SECURE = True  # Assurez-vous que cela correspond à votre environnement
+CSRF_COOKIE_HTTPONLY = True

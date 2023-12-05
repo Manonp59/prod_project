@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <h1 class="big_title">Connexion</h1>
+    <form method="post">
+        {{ form.as_p}}
+        {% csrf_token %}
+        <button type="submit" >Se connecter</button>
+    </form>
+{% endblock content %}

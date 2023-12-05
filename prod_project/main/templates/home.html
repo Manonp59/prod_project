@@ -1,1 +1,16 @@
-<h1>Hello World!</h1>
+{% extends 'base.html' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<h1 class="big_title">Hello {{request.user}} ! </h1>
+{% else %}
+<h1 class="big_title">Hello world !</h1>  
+{% endif %} 
+
+{% endblock %}
+
+
+
