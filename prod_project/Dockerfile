@@ -14,6 +14,7 @@ RUN pip install --upgrade pip && \
 
 
 ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE 1
 # définit une variable d'environnement
 
 
@@ -23,4 +24,5 @@ COPY . .
 
 EXPOSE 8000 
 
+# gunicorn est un serveur de production
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "prod_project.wsgi:application"]
