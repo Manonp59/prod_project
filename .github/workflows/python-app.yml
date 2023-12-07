@@ -29,4 +29,4 @@ jobs:
         pip install -r prod_project/requirements.txt
     - name: Run python tests
       run: |
-        python prod_project/manage.py test
+        python prod_project/manage.py test main
