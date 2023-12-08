@@ -21,7 +21,6 @@ ENV PYTHONDONTWRITEBYTECODE 1
 COPY . .
 # == . /app
 
-RUN python manage.py collectstatic --noinput
 EXPOSE 8000 
 
 # gunicorn est un serveur de production
