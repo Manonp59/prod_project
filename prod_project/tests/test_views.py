@@ -12,7 +12,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 
 
-
 def test_home_view():
     # Crée une instance de RequestFactory pour simuler une requête
     factory = RequestFactory()
@@ -30,7 +29,8 @@ def test_home_view():
 
 @pytest.fixture
 def authenticated_user():
-    user = User.objects.create_user(username='testuser', password='testpassword')
+    user = User.objects.create_user(
+        username='testuser', password='testpassword')
     return user
 
 
@@ -41,11 +41,12 @@ def logout_view(client, authenticated_user):
     response = client.get(reverse('logout'))
     return response
 
+
 @pytest.mark.django_db
 def test_logout_user(client, authenticated_user):
     # Se connecter avant de tester la vue de déconnexion
     client.force_login(authenticated_user)
-    
+
     # Appeler la vue de déconnexion
     response = client.get(reverse('logout'))
 
@@ -57,9 +58,6 @@ def test_logout_user(client, authenticated_user):
     assert not client.session.get('_auth_user_id')
 
 
-
-
-
 @pytest.fixture
 def signup_form_data():
     return {
@@ -67,6 +65,7 @@ def signup_form_data():
         'password1': 'testpassword',
         'password2': 'testpassword',
     }
+
 
 @pytest.mark.django_db
 def test_signup_page(client, signup_form_data):
@@ -91,6 +90,7 @@ def login_form_data():
         'password': 'testpassword',
     }
 
+
 @pytest.mark.django_db
 def test_login_page(client, login_form_data):
     # Simuler une requête GET à la page de connexion
@@ -108,11 +108,3 @@ def test_login_page(client, login_form_data):
 
     # Assurer que l'utilisateur est redirigé vers la page d'accueil après une connexion réussie
     assert response.status_code == 302
-
-
-
-
-
-
-
-

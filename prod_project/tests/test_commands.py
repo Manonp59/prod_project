@@ -3,6 +3,7 @@ from django.core.management import call_command
 from django.test import TestCase
 from pathlib import Path
 
+
 class SwitchEnvCommandTest(TestCase):
     def setUp(self):
         # Créez un fichier .env de test avec une variable d'environnement initiale
@@ -18,7 +19,5 @@ class SwitchEnvCommandTest(TestCase):
 
     def test_switch_env_command(self):
         # Exécutez la commande pour changer la valeur d'une variable d'environnement
-        call_command('switch_env', 'DJANGO_ENV', 'prod', '--env=test_env_file.env')
-
-
-
+        call_command('switch_env', 'DJANGO_ENV',
+                     'prod', '--env=test_env_file.env')
