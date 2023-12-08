@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-import os 
+import os
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -24,13 +24,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', 'ydjango-insecure-261)1sm_(w&+)9qtt9)*py5+u-k2#(h97m%lpstxmzjks(h&)z')
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY', 'ydjango-insecure-261)1sm_(w&+)9qtt9)*py5+u-k2#(h97m%lpstxmzjks(h&)z')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1','final-project-mplatteau.azurewebsites.net']
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1',
+                 'final-project-mplatteau.azurewebsites.net']
 
 
 # Application definition
@@ -92,17 +94,17 @@ if env == 'dev':
         }
     }
 
-else : 
+else:
     DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT', '5432')
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get('DB_NAME'),
+            'USER': os.environ.get('DB_USER'),
+            'PASSWORD': os.environ.get('DB_PASSWORD'),
+            'HOST': os.environ.get('DB_HOST'),
+            'PORT': os.environ.get('DB_PORT', '5432')
+        }
     }
-}
 
 
 # Password validation
@@ -141,7 +143,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [ BASE_DIR / 'static']
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
 STATIC_ROOT = BASE_DIR / 'productionfiles'
 
@@ -160,7 +162,8 @@ CORS_ALLOWED_ORIGINS = [
     # Ajoutez d'autres origines autorisées au besoin
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://final-project-mplatteau.azurewebsites.net','https://*.azurewebsites.net']
+CSRF_TRUSTED_ORIGINS = [
+    'https://final-project-mplatteau.azurewebsites.net', 'https://*.azurewebsites.net']
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
