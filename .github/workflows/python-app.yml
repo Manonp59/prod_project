@@ -47,9 +47,13 @@
   
                - name: Check Syntax # check code formatting
                  run: pycodestyle --statistics --ignore=E501 prod_project
+                
+               - name: Check Project Files
+                  run: ls
+          
   
                - name: Run Collecstatic # run migrations to create table in side car db container
-                 run: python manage.py collectstatic --noinput
+                 run: python prod_project/manage.py collectstatic --noinput
   
                - name: Run Migrations # run migrations to create table in side car db container
                  run: python prod_project/manage.py migrate
